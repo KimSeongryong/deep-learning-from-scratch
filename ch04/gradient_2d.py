@@ -52,11 +52,13 @@ if __name__ == '__main__':
     x0 = np.arange(-2, 2.5, 0.25)
     x1 = np.arange(-2, 2.5, 0.25)
     X, Y = np.meshgrid(x0, x1)
-    
+
     X = X.flatten()
     Y = Y.flatten()
-    
-    grad = numerical_gradient(function_2, np.array([X, Y]) )
+
+    grad = numerical_gradient(function_2, np.array([X, Y]))
+
+    print(grad.reshape((2,x0.size,x1.size)).transpose((1,2,0)))
     
     plt.figure()
     plt.quiver(X, Y, -grad[0], -grad[1],  angles="xy",color="#666666")#,headwidth=10,scale=40,color="#444444")
